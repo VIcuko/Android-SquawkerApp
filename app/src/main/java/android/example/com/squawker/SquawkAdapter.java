@@ -88,7 +88,7 @@ public class SquawkAdapter extends RecyclerView.Adapter<SquawkAdapter.SquawkView
         holder.dateTextView.setText(date);
 
         // Choose the correct, and in this case, locally stored asset for the instructor. If there
-        // were more users, you'd probably download this as part of the message.
+        // were more users, you'd probably download this as part of the message, but in this case it's hardcoded
         switch (authorKey) {
             case SquawkContract.ASSER_KEY:
                 holder.authorImageView.setImageResource(R.drawable.asser);
