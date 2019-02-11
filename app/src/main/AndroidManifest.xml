@@ -37,11 +37,12 @@
         <!-- Id service -->
         <service android:name=".fcm.SquawkFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <!-- TODO (4) Add your new service here, with an intent filter for action
+        <!-- TODO (4) Add your new service here, with an intent filter for action (added above, since - Done
+        the update from the deprecated method joins together the previous method used for checking the key
         com.google.firebase.MESSAGING_EVENT -->
 
     </application>
