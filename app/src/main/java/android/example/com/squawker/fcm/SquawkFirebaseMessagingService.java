@@ -15,6 +15,7 @@
  */
 package android.example.com.squawker.fcm;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ContentValues;
@@ -27,7 +28,8 @@ import android.example.com.squawker.provider.SquawkProvider;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v7.app.NotificationCompat;
+import android.os.Build;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -76,7 +78,10 @@ public class SquawkFirebaseMessagingService extends FirebaseMessagingService {
 
         if (dataReceived.size() > 0) {
             Log.d(LOG_TAG, "Message data payload: " + dataReceived);
+            sendNotification(dataReceived);
+            insertSquawk(dataReceived);
         }
+
     }
 
 
@@ -117,7 +122,18 @@ public class SquawkFirebaseMessagingService extends FirebaseMessagingService {
         }
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "myChannel";
+            String description = "This is a channel for notifications";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("44", name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this,"44")
                 .setSmallIcon(R.drawable.ic_duck)
                 .setContentTitle(String.format(getString(R.string.notification_message), author))
                 .setContentText(message)
