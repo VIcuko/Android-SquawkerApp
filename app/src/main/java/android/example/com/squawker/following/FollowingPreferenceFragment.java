@@ -70,7 +70,7 @@ public class FollowingPreferenceFragment extends PreferenceFragmentCompat implem
         }
     }
 
-    // TODO (3) Make sure to register and unregister this as a Shared Preference Change listener, in
+    // TODO (3) Make sure to register and unregister this as a Shared Preference Change listener, in - Done
     // onCreate and onDestroy.
 
 
