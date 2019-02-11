@@ -22,9 +22,9 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 /**
  * Listens for changes in the InstanceID
  */
-public class SquawkFirebaseInstanceIdService extends FirebaseMessagingService {
+public class SquawkFirebaseMessagingService extends FirebaseMessagingService {
 
-    private static String LOG_TAG = SquawkFirebaseInstanceIdService.class.getSimpleName();
+    private static String LOG_TAG = SquawkFirebaseMessagingService.class.getSimpleName();
 
     @Override
     public void onNewToken(String token) {
