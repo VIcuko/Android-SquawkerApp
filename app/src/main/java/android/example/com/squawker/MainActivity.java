@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements
         if (extras != null && extras.containsKey("test")){
             Log.d(LOG_TAG, "Contains: " + extras.getString("test"));
         }
-
     }
 
     @Override
