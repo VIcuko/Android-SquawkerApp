@@ -12,7 +12,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 // You'll need to implement the onTokenRefresh method. Simply have it print out
 // the new token.
 
-public class SquawkFirebaseInstanceIdService extends FirebaseMessagingService {
+public class SquawkFirebaseMessagingService extends FirebaseMessagingService {
 
     private String TAG = getClass().getSimpleName();
 
